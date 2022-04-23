@@ -1,0 +1,45 @@
+[ {
+  "id" : 1,
+  "name" : "qwe",
+  "coordinates" : {
+    "x" : 1.0,
+    "y" : 1
+  },
+  "creationDate" : 1649514480.743338000,
+  "salary" : 1231321,
+  "startDate" : [ 2222, 12, 22, 22, 22, 22 ],
+  "position" : "MANAGER",
+  "status" : "FIRED",
+  "person" : {
+    "weight" : 1231312,
+    "eyeColor" : "RED",
+    "hairColor" : "BLACK",
+    "location" : {
+      "x" : 1.0,
+      "y" : 1,
+      "z" : 1
+    }
+  }
+}, {
+  "id" : 3,
+  "name" : "monkey",
+  "coordinates" : {
+    "x" : 10.0,
+    "y" : 10
+  },
+  "creationDate" : 1649546468.361253000,
+  "salary" : 22000,
+  "startDate" : [ 1234, 12, 12, 12, 12, 12 ],
+  "position" : "HUMAN_RESOURCES",
+  "status" : "FIRED",
+  "person" : {
+    "weight" : 10000,
+    "eyeColor" : "WHITE",
+    "hairColor" : "WHITE",
+    "location" : {
+      "x" : 2.0,
+      "y" : 2,
+      "z" : 8
+    }
+  }
+} ]
