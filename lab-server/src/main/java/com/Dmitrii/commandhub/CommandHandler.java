@@ -1,4 +1,4 @@
-package com.Dmitrii.commandHub;
+package com.Dmitrii.commandhub;
 
 import com.Dmitrii.common.networkhub.Request;
 import com.Dmitrii.common.networkhub.Response;
@@ -20,6 +20,7 @@ public class CommandHandler {
 		commands.put("info", new Info());
 		commands.put("insert", new Insert());
 		commands.put("remove_key", new RemoveKey());
+		commands.put("show", new Show());
 
 		serverCommands.put("save", new Save());
 	}

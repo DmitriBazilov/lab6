@@ -1,12 +1,13 @@
 package com.Dmitrii.common.worker;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  *
  * Координаты 2-мерного пространства.
  */
-public class Coordinates implements Comparable<Coordinates>{
+public class Coordinates implements Comparable<Coordinates>, Serializable {
 
 	private double x;
 	private long y;

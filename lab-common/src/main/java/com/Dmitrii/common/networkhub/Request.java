@@ -28,4 +28,12 @@ public class Request implements Serializable {
 	public List<Object> getArgs() {
 		return args;
 	}
+
+	@Override
+	public String toString() {
+		return "Request{" +
+				"commandName='" + commandName + '\'' +
+				", args=" + args +
+				'}';
+	}
 }

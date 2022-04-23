@@ -22,6 +22,7 @@ public class Commands {
 		
 		commandsWithoutArguments.add("info");
 		commandsWithoutArguments.add("exit");
+		commandsWithoutArguments.add("show");
 		
 		commandsNeedWorker.add("insert");
 		
@@ -29,17 +30,17 @@ public class Commands {
 	}
 	
 	public boolean isCommand(String command) {
-		if (commandsNeedId.contains(command) ||
-			commandsNeedKey.contains(command) ||
-			commandsNeedWorker.contains(command) ||
-			commandsWithoutArguments.contains(command)) {
-				return true;
-		} else {
-			return false;
-		}
+		return commandsNeedId.contains(command) ||
+				commandsNeedKey.contains(command) ||
+				commandsNeedWorker.contains(command) ||
+				commandsWithoutArguments.contains(command);
 	}
 	
 	public boolean isNeedKey(String command) {
-		return commandsNeedKey.contains(command) ? true : false;
+		return commandsNeedKey.contains(command);
+	}
+
+	public boolean isNeedWorker(String command) {
+		return commandsNeedWorker.contains(command);
 	}
 }

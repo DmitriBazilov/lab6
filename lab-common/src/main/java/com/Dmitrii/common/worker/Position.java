@@ -1,10 +1,12 @@
 package com.Dmitrii.common.worker;
 
+import java.io.Serializable;
+
 /**
  *
  * Enum содержащий возможные должности рабов.
  */
-public enum Position {
+public enum Position implements Serializable {
 
 	MANAGER,
 	LABORER,

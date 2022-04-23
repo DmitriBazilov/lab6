@@ -1,4 +1,4 @@
-package com.Dmitrii.commandHub;
+package com.Dmitrii.commandhub;
 
 import java.util.List;
 

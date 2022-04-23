@@ -1,6 +1,5 @@
-package com.Dmitrii.commandHub;
+package com.Dmitrii.commandhub;
 
-import com.Dmitrii.common.networkhub.Response;
 import com.Dmitrii.common.parserhub.JsonParser;
 import com.Dmitrii.common.parserhub.Parser;
 

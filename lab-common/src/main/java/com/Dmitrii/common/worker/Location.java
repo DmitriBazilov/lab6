@@ -1,5 +1,6 @@
 package com.Dmitrii.common.worker;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * Местонахождение в 3-мерном пространстве.
  */
-public class Location {
+public class Location implements Serializable {
 
 	private Double x;
 	private long y;

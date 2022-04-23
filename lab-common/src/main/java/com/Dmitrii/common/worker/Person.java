@@ -1,10 +1,12 @@
 package com.Dmitrii.common.worker;
 
+import java.io.Serializable;
+
 /**
  *
  * Класс Человека.
  */
-public class Person {
+public class Person implements Serializable {
 
 	private Integer weight;
 	private Color eyeColor;

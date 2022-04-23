@@ -1,6 +1,6 @@
 package com.Dmitrii.server;
 
-import com.Dmitrii.commandHub.CommandHandler;
+import com.Dmitrii.commandhub.CommandHandler;
 
 import java.util.Scanner;
 

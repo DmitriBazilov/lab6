@@ -4,6 +4,7 @@ import com.Dmitrii.common.parserhub.*;
 import com.Dmitrii.common.worker.*;
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -45,5 +46,12 @@ public class WorkerCollection {
 	
 	public void removeKey(Coordinates coords) {
 		collection.remove(coords);
+	}
+
+	public void show() {
+		Collection<Worker> col = collection.values();
+		for (Worker w : col) {
+			System.out.println(w);
+		}
 	}
 }

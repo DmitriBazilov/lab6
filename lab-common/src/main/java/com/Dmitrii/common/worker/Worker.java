@@ -1,5 +1,6 @@
 package com.Dmitrii.common.worker;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -8,7 +9,7 @@ import java.util.Comparator;
  *
  * Непосредственно сам класс раба.
  */
-public class Worker implements Comparable<Worker> {
+public class Worker implements Comparable<Worker>, Serializable {
 
 	public static final int COUNTOFSETARGS = 7;
 

@@ -1,16 +1,12 @@
 package com.Dmitrii.server;
 
-import com.Dmitrii.commandHub.CommandHandler;
+import com.Dmitrii.commandhub.CommandHandler;
 import com.Dmitrii.common.networkhub.Request;
 import com.Dmitrii.common.networkhub.Response;
 import com.Dmitrii.common.networkhub.Serializer;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.nio.channels.SelectionKey;
@@ -66,6 +62,7 @@ public class ServerListener {
 				}
 				
 				if (request != null && address != null) {
+					System.out.println("client request " + request);
 					Response response = CommandHandler.executeCommandByRequest(request);
 					ByteBuffer byteResponse = ByteBuffer.wrap(serializer.serialize(response));
 					datagramChannel.send(byteResponse, address);

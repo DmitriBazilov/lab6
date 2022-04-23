@@ -1,6 +1,6 @@
 package com.Dmitrii.server;
 
-import com.Dmitrii.commandHub.CommandHandler;
+import com.Dmitrii.commandhub.CommandHandler;
 import java.io.File;
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public final class Server {
 			System.out.println("YA DAUN");
 		WorkerCollection collection = new WorkerCollection(file);
 		CommandHandler.setCollection(collection);
-		
+		CommandHandler.getCollection().show();
 		ServerListener clientListener = new ServerListener(1234);
 		clientListener.startListen();
     }
