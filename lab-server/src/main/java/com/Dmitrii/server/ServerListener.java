@@ -51,7 +51,7 @@ public class ServerListener {
 					SelectionKey key = it.next();
 					it.remove();
 					if (key.isReadable()) {
-						ByteBuffer buffer = ByteBuffer.allocate(1024);
+						ByteBuffer buffer = ByteBuffer.allocate(4096);
 						address = datagramChannel.receive(buffer);
 						buffer.flip();
 						byte[] byteRequest = new byte[buffer.remaining()];
@@ -65,6 +65,7 @@ public class ServerListener {
 					System.out.println("client request " + request);
 					Response response = CommandHandler.executeCommandByRequest(request);
 					ByteBuffer byteResponse = ByteBuffer.wrap(serializer.serialize(response));
+					//INSERT написать чтобы на сервере работал
 					datagramChannel.send(byteResponse, address);
 				}
 				
@@ -85,7 +86,7 @@ public class ServerListener {
 //				DatagramPacket dpResponse = new DatagramPacket(send, send.length, senderAddress, senderPort);
 //				serverSocket.send(dpResponse);
 			} catch (Exception e) {
-				System.out.println("СОСУ ХУЙ");
+				e.printStackTrace();
 			}
 		}
 	}

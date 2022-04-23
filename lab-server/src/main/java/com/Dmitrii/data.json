@@ -1,23 +1,23 @@
 [ {
   "id" : 1,
-  "name" : "rab1",
+  "name" : "abdula",
   "coordinates" : {
     "x" : 1.0,
     "y" : 1
   },
-  "creationDate" : 1616489012.010069453,
-  "salary" : 123123,
-  "startDate" : [ 2021, 3, 23, 10, 43, 32, 10069453 ],
-  "position" : "LABORER",
+  "creationDate" : 1650738312.267541000,
+  "salary" : 228,
+  "startDate" : [ 1111, 11, 11, 11, 11, 11 ],
+  "position" : "MANAGER",
   "status" : "FIRED",
   "person" : {
-    "weight" : 55,
-    "eyeColor" : "RED",
+    "weight" : 1337,
+    "eyeColor" : "BLACK",
     "hairColor" : "BLACK",
     "location" : {
-      "x" : 1.123,
-      "y" : 123,
-      "z" : 111
+      "x" : 1.0,
+      "y" : 1,
+      "z" : 1
     }
   }
 } ]
