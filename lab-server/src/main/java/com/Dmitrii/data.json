@@ -1,0 +1,45 @@
+[ {
+  "id" : 1,
+  "name" : "abama",
+  "coordinates" : {
+    "x" : 1.0,
+    "y" : 2
+  },
+  "creationDate" : 1651059810.587349300,
+  "salary" : 1234,
+  "startDate" : [ 1234, 12, 12, 12, 12, 12 ],
+  "position" : "MANAGER",
+  "status" : "PROBATION",
+  "person" : {
+    "weight" : 1234,
+    "eyeColor" : "BLUE",
+    "hairColor" : "BLUE",
+    "location" : {
+      "x" : 1.0,
+      "y" : 2,
+      "z" : 3
+    }
+  }
+}, {
+  "id" : 1,
+  "name" : "remezen",
+  "coordinates" : {
+    "x" : 1.0,
+    "y" : 3
+  },
+  "creationDate" : 1651074701.735336300,
+  "salary" : 1337,
+  "startDate" : [ 2003, 10, 10, 10, 10, 10 ],
+  "position" : "BAKER",
+  "status" : "RECOMMENDED_FOR_PROMOTION",
+  "person" : {
+    "weight" : 70,
+    "eyeColor" : "BLACK",
+    "hairColor" : "WHITE",
+    "location" : {
+      "x" : 1.0,
+      "y" : 2,
+      "z" : 3
+    }
+  }
+} ]

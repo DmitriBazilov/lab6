@@ -1,0 +1,14 @@
+insert
+monkey
+10 10
+22000
+1234-12-12T12:12:12
+HUMAN_RESOURCES
+FIRED
+10000
+WHITE
+WHITE
+2 2 8
+show
+show
+save
