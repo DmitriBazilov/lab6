@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class RemoveKey extends Command{
 
-	public RemoveKey(String name, String description) {
-		super(name, description);
+	public RemoveKey(CommandHandler handler, String name, String description) {
+		super(handler, name, description);
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class RemoveKey extends Command{
 			System.out.println(o);
 		}
 		Coordinates coords = (Coordinates) args.get(0);
-		short returnCode = CommandHandler.getCollection().removeKey(coords);
+		short returnCode = getHandler().getCollection().removeKey(coords);
 		return returnCode == 1 ? new Response("Раб успешно удален") : new Response("Такого раба не существует");
 	}
 }

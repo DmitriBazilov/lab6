@@ -1,6 +1,7 @@
 package com.Dmitrii.commandhub;
 
 import com.Dmitrii.common.networkhub.Response;
+import com.Dmitrii.server.WorkerCollection;
 
 import java.util.Collection;
 import java.util.List;
@@ -9,13 +10,13 @@ import java.util.Set;
 
 public class Help extends Command{
 
-    public Help(String name, String description) {
-        super(name, description);
+    public Help(CommandHandler handler, String name, String description) {
+        super(handler, name, description);
     }
 
     @Override
     public Object execute(List<Object> args) {
-        Map<String, Command> commands = CommandHandler.getCommands();
+        Map<String, Command> commands = getHandler().getCommands();
         Collection<Command> c = commands.values();
         StringBuilder responseMessage = new StringBuilder();
         for (Command command : c) {

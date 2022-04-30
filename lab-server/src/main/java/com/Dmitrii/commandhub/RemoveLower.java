@@ -7,14 +7,14 @@ import java.util.List;
 
 public class RemoveLower extends Command {
 
-    public RemoveLower(String name, String description) {
-        super(name, description);
+    public RemoveLower(CommandHandler handler, String name, String description) {
+        super(handler, name, description);
     }
 
     @Override
     public Object execute(List<Object> args) {
         Worker worker = (Worker) args.get(0);
-        int result = CommandHandler.getCollection().removeLower(worker);
+        int result = getHandler().getCollection().removeLower(worker);
         return new Response("Из коллекции удалено " + result + " рабов");
     }
 }

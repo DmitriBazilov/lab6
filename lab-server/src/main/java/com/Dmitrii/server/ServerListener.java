@@ -22,9 +22,11 @@ public class ServerListener {
 	
 	private final Selector selector;
 	private final DatagramChannel datagramChannel;
+	private final CommandHandler handler;
 	private boolean isOn = true;
 	
-	public ServerListener(int port) throws IOException {
+	public ServerListener(int port, CommandHandler handler) throws IOException {
+		this.handler = handler;
 		datagramChannel = DatagramChannel.open();
 		selector = Selector.open();
 		datagramChannel.socket().bind(new InetSocketAddress(port));
@@ -33,7 +35,7 @@ public class ServerListener {
 	}
 	
 	public void startListen() throws IOException {
-		ConsoleListener consoleListener = new ConsoleListener();
+		ConsoleListener consoleListener = new ConsoleListener(handler);
 		consoleListener.start();
 		
 		Serializer serializer = new Serializer();
@@ -63,9 +65,8 @@ public class ServerListener {
 				
 				if (request != null && address != null) {
 					System.out.println("client request " + request);
-					Response response = CommandHandler.executeCommandByRequest(request);
+					Response response = handler.executeCommandByRequest(request);
 					ByteBuffer byteResponse = ByteBuffer.wrap(serializer.serialize(response));
-					//INSERT написать чтобы на сервере работал
 					datagramChannel.send(byteResponse, address);
 				}
 				

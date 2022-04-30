@@ -9,16 +9,16 @@ import java.util.List;
 
 public class Save extends Command {
 
-    public Save(String name, String description) {
-        super(name, description);
+    public Save(CommandHandler handler, String name, String description) {
+        super(handler, name, description);
     }
 
     @Override
     public Object execute(List<Object> args) {
         Parser parser = new JsonParser();
-        File file = new File("C:\\Users\\R355-w-9-stud\\Downloads\\Новая папка\\lab6-main\\lab6-main\\lab-server\\src\\main\\java\\com\\Dmitrii\\data.json");
+        File file = new File("/home/dmitrii/Документы/Programming_univer/lab6/lab6/lab-server/src/main/java/com/Dmitrii/data.json");
         try {
-            parser.writeClasses(file, CommandHandler.getCollection().getCollection());
+            parser.writeClasses(file, getHandler().getCollection().getCollection());
         } catch (IOException e) {
             return new String("Файла не существует");
         }

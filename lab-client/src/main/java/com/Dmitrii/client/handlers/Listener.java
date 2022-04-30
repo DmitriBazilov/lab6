@@ -3,6 +3,9 @@ package com.Dmitrii.client.handlers;
 import com.Dmitrii.common.networkhub.Request;
 import com.Dmitrii.common.networkhub.Response;
 import com.Dmitrii.common.networkhub.Serializer;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,12 +49,21 @@ public class Listener {
 		while (isOn) {
 			try {
 				String command = reader.readCommand().trim();
+				if (command != null) {
+					throw new Exception("Неправильный скрипт");
+				}
 				if ("exit".equals(command.toLowerCase())) {
 					isOn = false;
 					continue;
 				}
 				ArrayList<Object> args = reader.readArgs(command);
-				
+				if (args == null) {
+					throw new Exception("Неправильный скрипт");
+				}
+				if ("execute_script".equals(command.toLowerCase())) {
+					executeScript((String) args.get(0));
+					continue;
+				}
 				// мутим реквест
 				Request request = new Request(command, args);
 				byte[] send = serializer.serialize(request);
@@ -59,7 +71,7 @@ public class Listener {
 				clientSocket.send(dpRequest);
 				
 				// получаем ответ
-				byte[] receive = new byte[1024];
+				byte[] receive = new byte[8192];
 				DatagramPacket dpResponse = new DatagramPacket(receive, receive.length);
 				clientSocket.receive(dpResponse);
 				Response response = (Response) serializer.deserialize(dpResponse.getData());
@@ -75,10 +87,18 @@ public class Listener {
 //				if (response.hasInfo())
 //					System.out.println(response.getInfo());
 //			}
-			} catch (IOException ex) {
-
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				isOn = false;
 			}
 		}
 		clientSocket.close();
+	}
+	
+	public void executeScript(String path) throws FileNotFoundException {
+		File file = new File(path);
+		FileInputStream fileStream = new FileInputStream(file);
+		Listener listener = new Listener(fileStream);
+		listener.startListen();
 	}
 }

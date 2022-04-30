@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Clear extends Command {
 
-    public Clear(String name, String description) {
-        super(name, description);
+    public Clear(CommandHandler handler, String name, String description) {
+        super(handler, name, description);
     }
 
     @Override
     public Object execute(List<Object> args) {
-        return CommandHandler.getCollection().clear() == 1 ? new Response("Коллекция успешно очищена") : new Response("Ошибка при очистке коллекции");
+        return getHandler().getCollection().clear() == 1 ? new Response("Коллекция успешно очищена") : new Response("Ошибка при очистке коллекции");
     }
 }

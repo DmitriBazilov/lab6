@@ -21,7 +21,7 @@
     }
   }
 }, {
-  "id" : 1,
+  "id" : 2,
   "name" : "remezen",
   "coordinates" : {
     "x" : 1.0,
@@ -40,6 +40,28 @@
       "x" : 1.0,
       "y" : 2,
       "z" : 3
+    }
+  }
+}, {
+  "id" : 3,
+  "name" : "monkey",
+  "coordinates" : {
+    "x" : 10.0,
+    "y" : 10
+  },
+  "creationDate" : 1651333379.439150000,
+  "salary" : 22000,
+  "startDate" : [ 1234, 12, 12, 12, 12, 12 ],
+  "position" : "HUMAN_RESOURCES",
+  "status" : "FIRED",
+  "person" : {
+    "weight" : 10000,
+    "eyeColor" : "WHITE",
+    "hairColor" : "WHITE",
+    "location" : {
+      "x" : 2.0,
+      "y" : 2,
+      "z" : 8
     }
   }
 } ]

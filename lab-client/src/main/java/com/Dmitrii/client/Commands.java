@@ -13,12 +13,16 @@ public class Commands {
 	private final List<String> commandsNeedWorker;
 	private final List<String> commandsNeedKey;
 	private final List<String> commandsNeedId;
+	private final List<String> commandsNeedPath;
 	
 	public Commands() {
 		commandsNeedId = new ArrayList<>();
 		commandsNeedKey = new ArrayList<>();
 		commandsNeedWorker = new ArrayList<>();
 		commandsWithoutArguments = new ArrayList<>();
+		commandsNeedPath = new ArrayList<>();
+		
+		commandsNeedPath.add("execute_script");
 
 		commandsNeedId.add("update_id");
 
@@ -35,13 +39,21 @@ public class Commands {
 		commandsWithoutArguments.add("show");
 		commandsWithoutArguments.add("help");
 		commandsWithoutArguments.add("clear");
+		commandsWithoutArguments.add("max_by_salary");
+		commandsWithoutArguments.add("print_ascending");//-
+		commandsWithoutArguments.add("print_unique_position");//-
 	}
 	
 	public boolean isCommand(String command) {
 		return commandsNeedId.contains(command) ||
 				commandsNeedKey.contains(command) ||
 				commandsNeedWorker.contains(command) ||
-				commandsWithoutArguments.contains(command);
+				commandsWithoutArguments.contains(command) ||
+				commandsNeedPath.contains(command);
+	}
+	
+	public boolean isNeedPath(String command) {
+		return commandsNeedPath.contains(command);
 	}
 	
 	public boolean isNeedKey(String command) {

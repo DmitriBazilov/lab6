@@ -8,10 +8,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +38,7 @@ class CommandReader {
 			String line = reader.readLine().trim().toLowerCase();
 			if (commands.isCommand(line))
 				return line;
-			else
+			else 
 				return readCommand();
 		} catch (IOException ex) {
 			System.out.println("ОСУЖДАЮ");
@@ -44,18 +48,41 @@ class CommandReader {
 	
 	public ArrayList<Object> readArgs(String command) {
 		ArrayList<Object> result = new ArrayList<>();
-		if (commands.isNeedId(command))
-			result.add(readId());
-		if (commands.isNeedKey(command))
-			result.add(readCoordinates());
-		if (commands.isNeedWorker(command))
-			result.add(readWorker());
+		try {
+			if (commands.isNeedPath(command))
+				result.add(readPath());
+			if (commands.isNeedId(command))
+				result.add(readId());
+			if (commands.isNeedKey(command))
+				result.add(readCoordinates());
+			if (commands.isNeedWorker(command))
+				result.add(readWorker());
+		} catch (Exception e) {
+			return null;
+		}	
 		return result;
+	}
+	
+	public String readPath() {
+		try {
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите путь до скрипта: ");
+			String line = reader.readLine().trim();
+			if (Files.isRegularFile(Paths.get(line))) {
+				return line;
+			} else {
+				return readPath();
+			}
+		} catch (IOException ex) {
+			System.out.println("lsdkjfkldsjfkl");
+			return null;
+		}
 	}
 
 	public Integer readId() {
 		try {
-			System.out.print("Введите Id : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите Id : ");
 			String line = reader.readLine().trim();
 			Integer result = IdValidator.validateId(line);
 			return result;
@@ -84,7 +111,8 @@ class CommandReader {
 
 	public String readName() {
 		try {
-			System.out.print("Введите имя : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите имя : ");
 			String line = reader.readLine().trim();
 			String result = NameValidator.validateName(line);
 			return result;
@@ -102,7 +130,8 @@ class CommandReader {
 
 	public Coordinates readCoordinates() {
 		try {
-			System.out.print("Введите 2 координаты : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите 2 координаты : ");
 			String line = reader.readLine().trim();
 			String[] coords = line.split("\\s+");
 			if (coords.length != 2)
@@ -124,7 +153,8 @@ class CommandReader {
 
 	public Long readSalary() {
 		try {
-			System.out.print("Введите зарплату раба : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите зарплату раба : ");
 			String line = reader.readLine().trim();
 			Long result = SalaryValidator.validateSalary(line);
 			return result;
@@ -141,9 +171,11 @@ class CommandReader {
 
 	public LocalDateTime readStartDate() {
 		try {
-			System.out.println("Введите дату начала работы : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите дату начала работы(YYYY-MM-DD hh:mm:ss): ");
 			String line = reader.readLine().trim();
-			LocalDateTime result = StartDateValidator.validateStartDate(line);
+			String replace = line.replace(" ", "T");
+			LocalDateTime result = StartDateValidator.validateStartDate(replace);
 			return result;
 		} catch (IOException e) {
 			return null;
@@ -158,9 +190,10 @@ class CommandReader {
 
 	public Position readPosition() {
 		try {
-			System.out.println("Введите должность раба : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите должность раба(MANAGER, LABORER, HUMAN_RESOURCES, LEAD_DEVELOPER, BAKER): ");
 			String line = reader.readLine().trim();
-			Position result = PositionValidator.validatePosition(line);
+			Position result = PositionValidator.validatePosition(line.toUpperCase());
 			return result;
 		} catch (IOException e) {
 			return null;
@@ -175,9 +208,10 @@ class CommandReader {
 
 	public Status readStatus() {
 		try {
-			System.out.println("Введите статус раба : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите статус раба(FIRED, RECOMMENDED_FOR_PROMOTION, PROBATION): ");
 			String line = reader.readLine().trim();
-			Status result = StatusValidator.validateStatus(line);
+			Status result = StatusValidator.validateStatus(line.toUpperCase());
 			return result;
 		} catch (IOException e) {
 			return null;
@@ -200,7 +234,8 @@ class CommandReader {
 
 	public Integer readWeight() {
 		try {
-			System.out.println("Введите вес раба : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите вес раба : ");
 			String line = reader.readLine().trim();
 			Integer result = WeightValidator.validateWeight(line);
 			return result;
@@ -217,9 +252,10 @@ class CommandReader {
 
 	public Color readEyeColor() {
 		try {
-			System.out.println("Введите цвет глаз раба : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите цвет глаз раба(RED, WHITE, BLACK, ORANGE, BLUE): ");
 			String line = reader.readLine().trim();
-			Color result = EyeColorValidator.validateEyeColor(line);
+			Color result = EyeColorValidator.validateEyeColor(line.toUpperCase());
 			return result;
 		} catch (IOException e) {
 			return null;
@@ -234,9 +270,10 @@ class CommandReader {
 
 	public Color readHairColor() {
 		try {
-			System.out.println("Введите цвет волос раба : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите цвет волос раба(RED, WHITE, BLACK, ORANGE, BLUE): ");
 			String line = reader.readLine().trim();
-			Color result = HairColorValidator.validateHairColor(line);
+			Color result = HairColorValidator.validateHairColor(line.toUpperCase());
 			return result;
 		} catch (IOException e) {
 			return null;
@@ -251,7 +288,8 @@ class CommandReader {
 
 	public Location readLocation() {
 		try {
-			System.out.println("Введите место жительства раба(3 координаты) : ");
+			if (!(stream instanceof FileInputStream))
+				System.out.println("Введите место жительства раба(3 координаты) : ");
 			String line = reader.readLine().trim();
 			Location result = PersonValidator.validateLocation(line);
 			return result;

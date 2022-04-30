@@ -10,7 +10,13 @@ import java.util.Scanner;
  */
 public class ConsoleListener extends Thread {
 	
-	private boolean isOn = true;
+	private final CommandHandler handler;
+	private final boolean isOn;
+	
+	public ConsoleListener(CommandHandler handler) {
+		this.handler = handler;
+		isOn = true;
+	}
 	
 	@Override
 	public void run() {
@@ -20,7 +26,7 @@ public class ConsoleListener extends Thread {
 			if ("exit".equals(message))
 				System.exit(1);
 			if ("save".equals(message))
-				System.out.println(CommandHandler.executeServerCommand(message));
+				System.out.println(handler.executeServerCommand(message));
 		}
 	}
 

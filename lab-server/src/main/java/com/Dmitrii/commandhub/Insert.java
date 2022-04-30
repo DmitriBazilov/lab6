@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class Insert extends Command{
 
-	public Insert(String name, String description) {
-		super(name, description);
+	public Insert(CommandHandler handler, String name, String description) {
+		super(handler, name, description);
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class Insert extends Command{
 		Worker worker = (Worker) args.get(0);
 		worker.setId();
 		worker.setCreationDate();
-		short returnCode = CommandHandler.getCollection().insert(worker);
+		short returnCode = getHandler().getCollection().insert(worker);
 		return returnCode == 1 ? new Response("Раб добавлен в коллекцию") : new Response("Ошибка при добавлении раба в коллекцию");
 	}
 

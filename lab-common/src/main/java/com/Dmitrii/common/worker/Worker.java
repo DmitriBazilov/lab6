@@ -119,7 +119,7 @@ public class Worker implements Comparable<Worker>, Serializable {
 	
 	@Override
 	public int compareTo(Worker w) {
-		return Comparator.comparing(Worker::getCoordinates).thenComparing(Worker::getSalary).compare(this, w);
+		return Comparator.comparing(Worker::getCoordinates).thenComparingLong(Worker::getSalary).compare(this, w);
 	}
 
 	@Override

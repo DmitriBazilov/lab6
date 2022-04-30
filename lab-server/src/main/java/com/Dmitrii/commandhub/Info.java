@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class Info extends Command{
 
-	public Info(String name, String description) {
-		super(name, description);
+	public Info(CommandHandler handler, String name, String description) {
+		super(handler, name, description);
 	}
 
 	@Override
 	public Object execute(List<Object> args) {
-		return new Response(CommandHandler.getCollection().getInfo());
+		return new Response(getHandler().getCollection().getInfo());
 	}
 
 }
