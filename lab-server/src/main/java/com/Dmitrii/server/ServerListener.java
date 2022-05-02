@@ -23,7 +23,6 @@ public class ServerListener {
 	private final Selector selector;
 	private final DatagramChannel datagramChannel;
 	private final CommandHandler handler;
-	private boolean isOn = true;
 	
 	public ServerListener(int port, CommandHandler handler) throws IOException {
 		this.handler = handler;
@@ -40,7 +39,7 @@ public class ServerListener {
 		
 		Serializer serializer = new Serializer();
 		System.out.println("Слушаем");
-		while (isOn) {
+		while (handler.getServerIsOn()) {
 			try {
 				
 				if (selector.selectNow() == 0)

@@ -1,8 +1,19 @@
 package com.Dmitrii.client.handlers;
 
+import com.Dmitrii.client.validators.WeightValidator;
+import com.Dmitrii.client.validators.SalaryValidator;
+import com.Dmitrii.client.validators.NameValidator;
+import com.Dmitrii.client.validators.IdValidator;
+import com.Dmitrii.client.validators.HairColorValidator;
+import com.Dmitrii.client.validators.EyeColorValidator;
+import com.Dmitrii.client.validators.CoordinatesValidator;
+import com.Dmitrii.client.validators.PersonValidator;
+import com.Dmitrii.client.validators.PositionValidator;
+import com.Dmitrii.client.validators.StatusValidator;
+import com.Dmitrii.client.validators.StartDateValidator;
+import com.Dmitrii.client.validators.WorkerValidator;
 import com.Dmitrii.client.Commands;
 import com.Dmitrii.common.worker.*;
-import com.Dmitrii.common.worker.validator.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,11 +22,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -41,9 +48,8 @@ class CommandReader {
 			else 
 				return readCommand();
 		} catch (IOException ex) {
-			System.out.println("ОСУЖДАЮ");
+			return null;
 		}	
-		return null;
 	}
 	
 	public ArrayList<Object> readArgs(String command) {
@@ -74,7 +80,6 @@ class CommandReader {
 				return readPath();
 			}
 		} catch (IOException ex) {
-			System.out.println("lsdkjfkldsjfkl");
 			return null;
 		}
 	}
@@ -87,7 +92,6 @@ class CommandReader {
 			Integer result = IdValidator.validateId(line);
 			return result;
 		} catch (IOException e) {
-			System.out.println("adas");
 			return null;
 		} catch (IllegalArgumentException e) {
 			if (!(stream instanceof FileInputStream)) {
@@ -117,7 +121,6 @@ class CommandReader {
 			String result = NameValidator.validateName(line);
 			return result;
 		} catch (IOException e) {
-			System.out.println("jdsklfjs");
 			return null;
 		} catch	(IllegalArgumentException e) {
 			if (!(stream instanceof FileInputStream)) {
@@ -140,7 +143,6 @@ class CommandReader {
 			long y = CoordinatesValidator.validateY(coords[1]);
 			return new Coordinates(x, y);
 		} catch (IOException e) {
-			System.out.println("LAJLKAJD");
 			return null;
 		} catch (NumberFormatException e) {
 			if (!(stream instanceof FileInputStream)) {

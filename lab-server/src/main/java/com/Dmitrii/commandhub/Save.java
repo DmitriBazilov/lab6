@@ -1,7 +1,7 @@
 package com.Dmitrii.commandhub;
 
-import com.Dmitrii.common.parserhub.JsonParser;
-import com.Dmitrii.common.parserhub.Parser;
+import com.Dmitrii.parserhub.JsonParser;
+import com.Dmitrii.parserhub.Parser;
 
 import java.io.File;
 import java.io.IOException;

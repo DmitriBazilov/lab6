@@ -1,6 +1,7 @@
 package com.Dmitrii.server;
 
-import com.Dmitrii.common.parserhub.*;
+import com.Dmitrii.parserhub.JsonParser;
+import com.Dmitrii.parserhub.Parser;
 import com.Dmitrii.common.worker.*;
 
 import java.io.File;
@@ -127,6 +128,6 @@ public class WorkerCollection {
 		for (Worker w : col) {
 			result += (w.toString() + System.lineSeparator());
         }
-		return result;
+		return result.substring(0, result.length() - 1);
     }
 }

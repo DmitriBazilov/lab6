@@ -49,7 +49,7 @@ public class Listener {
 		while (isOn) {
 			try {
 				String command = reader.readCommand().trim();
-				if (command != null) {
+				if (command == null) {
 					throw new Exception("Неправильный скрипт");
 				}
 				if ("exit".equals(command.toLowerCase())) {
@@ -88,7 +88,6 @@ public class Listener {
 //					System.out.println(response.getInfo());
 //			}
 			} catch (Exception ex) {
-				System.out.println(ex.getMessage());
 				isOn = false;
 			}
 		}
